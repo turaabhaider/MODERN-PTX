@@ -1,0 +1,75 @@
+.ethics-section {
+  position: relative;
+  padding: 100px 8% 100px 12%; /* Matched left padding to align with Fabric component */
+  background: var(--bg-white);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Matched vertical side-label style */
+.side-label-ethics {
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 10px;
+  color: #bcbcbc;
+  text-transform: uppercase;
+}
+
+.ethics-content {
+  width: 100%;
+  height: 60vh; /* Controlled height of the main banner block */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('https://images.unsplash.com/photo-1534639077088-d702bcf685e7?q=80&w=765&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 40px; /* Matched to the rounded corners in reference */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  
+  /* Adds a simple parallax effect on modern browsers */
+  background-attachment: fixed; 
+}
+
+/* Basic fix for parallax on older mobile devices */
+@supports (-webkit-overflow-scrolling: touch) {
+  .ethics-content {
+    background-attachment: scroll;
+  }
+}
+
+.quote-container {
+  text-align: center;
+  color: #fff;
+  padding: 0 10%;
+}
+
+.quote-container blockquote {
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+.quote-container cite {
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: normal;
+  color: #ddd;
+}
+
+@media (max-width: 1024px) {
+  .side-label-ethics { display: none; }
+  .ethics-section { padding: 60px 5%; }
+  .ethics-content { border-radius: 20px; }
+}

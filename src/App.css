@@ -1,38 +1,168 @@
-.App {
-  text-align: center;
+:root {
+  /* Ultra-Premium White & Grey Palette */
+  --bg-white: #ffffff;
+  --bg-soft: #f8f9fa;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent: #222222; /* Charcoal/Black accent */
+  --border: rgba(0, 0, 0, 0.08);
+  --glass: rgba(255, 255, 255, 0.85);
+  --transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--bg-white);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Fix: The Reveal Animation Logic */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* This is the class the JS adds on scroll */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glassmorphism Navbar Fix */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem 10%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  z-index: 1000;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: 2.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  opacity: 0.6;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  letter-spacing: 2.5px; /* Premium expansion effect */
+}
+
+/* Sections Branding */
+section {
+  padding: 140px 10%;
+  position: relative;
+}
+
+/* About / Logistics Section Fix */
+.about-minimal {
+  text-align: center;
+  background-color: var(--bg-soft);
+}
+
+.subtitle {
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aaa;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.about-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.about-content h2 span {
+  color: #ddd;
+}
+
+.about-content p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Global Premium Button Fix */
+.btn-dark {
+  padding: 1.2rem 2.8rem;
+  background: var(--accent);
   color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-dark:hover {
+  background: #444;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Mobile Responsiveness for App Layout */
+@media (max-width: 992px) {
+  section { padding: 80px 5%; }
+  .nav-links { display: none; }
+  
+  .about-content h2 { font-size: 2.5rem; }
+}
+html {
+  scroll-behavior: smooth;
+  /* This prevents the navbar from covering the top of the section */
+  scroll-padding-top: 80px; 
 }

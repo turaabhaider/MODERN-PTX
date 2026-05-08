@@ -1,0 +1,194 @@
+/* 1. MAIN HERO CONTAINER */
+.hero {
+  /* Dynamic height for mobile browsers, fallback to 100vh */
+  height: 100vh;
+  height: 100dvh; 
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  /* Background: Premium Overlay + Fixed Image */
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.82)
+    ),
+    url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1972') center/cover no-repeat;
+  
+  padding: 0 10%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 2. LUXURY BLURRED DEPTH EFFECT */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none; /* Prevents interference with button clicks */
+}
+
+/* 3. CONTENT WRAPPER */
+.hero-content {
+  max-width: 950px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h4 {
+  letter-spacing: 8px;
+  color: #888888;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.hero h1 {
+  /* clamp ensures font size scales perfectly between mobile and desktop */
+  font-size: clamp(2.5rem, 8vw, 5.8rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: #cccccc;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #555555;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+/* 4. BUTTONS & LINK WRAPPERS */
+.hero-btns {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-link {
+  text-decoration: none;
+  display: inline-block;
+  /* Required for the buttons to fill their container on mobile */
+  transition: transform 0.3s ease;
+}
+
+.btn-extreme-dark {
+  padding: 1.2rem 3rem;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: block; /* Works inside the .btn-link wrapper */
+  width: 100%;
+}
+
+.btn-extreme-dark:hover {
+  background: #000000;
+  transform: translateY(-5px);
+  letter-spacing: 5px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn-extreme-dark::after {
+  content: '→';
+  position: absolute;
+  right: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-extreme-dark:hover::after {
+  opacity: 1;
+  right: 25px;
+}
+
+.btn-extreme-outline {
+  padding: 1.2rem 3rem;
+  background: transparent;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.btn-extreme-outline:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+  transform: translateY(-5px);
+}
+
+/* 5. MOBILE RESPONSIVENESS (Phone Specific) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 5%;
+    /* Ensures no cutting off on small screens */
+    align-items: center; 
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    margin-bottom: 2rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .btn-link {
+    width: 100%;
+  }
+
+  .btn-extreme-dark,
+  .btn-extreme-outline {
+    width: 100%;
+    padding: 1rem;
+    letter-spacing: 2px;
+  }
+}

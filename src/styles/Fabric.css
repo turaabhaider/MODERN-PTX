@@ -1,0 +1,100 @@
+.fabric-section {
+  position: relative;
+  padding: 100px 8% 100px 12%; /* Extra left padding for the side label */
+  background-color: #fff;
+}
+
+/* The vertical "FABRIC" label on the left */
+.side-label {
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 10px;
+  color: #bcbcbc;
+  text-transform: uppercase;
+}
+
+/* 3-Column Grid */
+.fabric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* Precise gap as seen in screenshot */
+}
+
+.fabric-item {
+  position: relative;
+  aspect-ratio: 4 / 3; /* Maintains the rectangle shape */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.fabric-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fabric-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Centered Text Overlay */
+.fabric-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1); /* Subtle darkening for text legibility */
+  transition: background 0.4s ease;
+}
+
+.fabric-overlay h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effects */
+.fabric-item:hover img {
+  transform: scale(1.05);
+}
+
+.fabric-item:hover .fabric-overlay {
+  background: rgba(0, 0, 0, 0.3); /* Darkens more on hover */
+}
+
+/* Responsive Logic */
+@media (max-width: 1024px) {
+  .fabric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .side-label {
+    display: none; /* Remove side label on smaller screens to save space */
+  }
+  .fabric-section {
+    padding: 60px 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .fabric-grid {
+    grid-template-columns: 1fr;
+  }
+  .fabric-overlay h2 {
+    font-size: 1.4rem;
+  }
+}
